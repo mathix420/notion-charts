@@ -9,7 +9,7 @@
         },
         {
             "src": "^(/.*)",
-            "methods": ["GET"],
+            "methods": ["GET", "HEAD"],
             "dest": "main.py",
             "continue": true
         }
