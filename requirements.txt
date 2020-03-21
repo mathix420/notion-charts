@@ -1,0 +1,2 @@
+git+git://github.com/mathix420/notion-py.git
+Flask>=1.1.1

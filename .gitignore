@@ -1,0 +1,10 @@
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__
+*.pyc
+
+.env
+.now

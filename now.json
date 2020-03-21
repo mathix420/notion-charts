@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+        { "src": "main.py", "use": "@now/python" }
+    ],
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "^(/.*)",
+            "methods": ["GET"],
+            "dest": "main.py",
+            "continue": true
+        }
+    ],
+    "build": {
+        "env": {
+            "NOTION_DATA_DIR": "/tmp/notion-py",
+            "TOKEN_V2": "@token_v2"
+        }
+    },
+    "env": {
+        "NOTION_DATA_DIR": "/tmp/notion-py",
+        "TOKEN_V2": "@token_v2"
+    }
+}
