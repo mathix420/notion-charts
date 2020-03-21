@@ -37,7 +37,7 @@ def get_stats(collection, view):
 	d = done / len(rows) * 100
 	p = en_cours / len(rows) * 100
 	t = todo / len(rows) * 100
-	return d, p, t
+	return d, p, t, cv.name
 
 
 @app.route('/robots.txt')
@@ -47,20 +47,20 @@ def robots():
 
 @app.route('/chart-image/<collection>/<view>')
 def get_chart_image(collection, view):
-	d, p, t = get_stats(collection, view)
+	d, p, t, _ = get_stats(collection, view)
 
 	return redirect(f"https://chart.googleapis.com/chart?cht=p&chd=t:{d},{p},{t}&chs={image_size}&chdl={'|'.join(labels)}")
 
 
 @app.route('/chart/<collection>/<view>')
 def get_chart(collection, view):
-	d, p, t = get_stats(collection, view)
+	d, p, t, title = get_stats(collection, view)
 
 	return render_template('chart.html', datas=json.dumps([
 		[labels[0], d],
 		[labels[1], p],
 		[labels[2], t]
-	]))
+	]), title=title)
 
 
 @app.route('/')

@@ -20,14 +20,16 @@
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows({{ datas|safe }});
+        data.addColumn('string', 'Status');
+        data.addColumn('number', 'Percentage');
+        data.addRows({{ datas | safe }});
 
         // Set chart options
-        var options = {'title':'Chart',
-                       'width':700,
-                       'height':400};
+        var options = {
+          'title':'{{title}}',
+          'width':700,
+          'height':400
+        };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
