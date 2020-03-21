@@ -1,5 +1,7 @@
 # notion-charts
 
+![image](/example.png)
+
 ## Documentation
 
 ### Image charts
