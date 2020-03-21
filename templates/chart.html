@@ -24,18 +24,40 @@
         data.addColumn('number', 'Percentage');
         data.addRows({{ datas | safe }});
 
+        var container = document.getElementById('chart_div');
+
+        var height = container.clientHeight;
+        var width = container.clientWidth;
+
         // Set chart options
         var options = {
-          'title':'{{title}}',
-          'width':700,
-          'height':400
+          'title': '{{title}}',
+          'width': width,
+          'height': height
         };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+      window.onresize = drawChart;
     </script>
+    <style>
+      html, body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+
+      #chart_div {
+        margin: 0;
+        border: none;
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
 </head>
 <body>
     <div id="chart_div"></div>
