@@ -49,7 +49,7 @@ def robots():
 def get_chart_image(collection, view):
 	d, p, t, _ = get_stats(collection, view)
 
-	return redirect(f"https://chart.googleapis.com/chart?cht=p&chd=t:{d},{p},{t}&chs={image_size}&chdl={'|'.join(labels)}")
+	return redirect(f"https://image-charts.com/chart?cht=p&chd=t:{d},{p},{t}&chs={image_size}&chdl={'|'.join(labels)}")
 
 
 @app.route('/chart/<collection>/<view>')
