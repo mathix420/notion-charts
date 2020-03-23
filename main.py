@@ -58,7 +58,10 @@ def get_chart_image(collection, view):
 			'borderWidth': 0,
 			'datasets': [{'data': [d, p, t]}]
 		},
-		'options': {'plugins': {'outlabels': {'text': ''}}}
+		'options': {
+			'plugins': {'outlabels': {'text': ''}},
+			'rotation': 0,
+		}
 	}
 
 	return redirect(CHART_URL + json.dumps(data))
