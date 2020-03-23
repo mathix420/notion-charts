@@ -6,11 +6,13 @@ from flask import Flask, render_template, redirect
 
 app = Flask(__name__)
 
-image_size = '380x220'
+width = 380
+height = 220
 labels = ['Done', 'In Progress', 'Todo']
 
 client = NotionClient(token_v2=getenv('TOKEN_V2'))
 URL_BASE = 'https://www.notion.so/businesstime/{}?v={}'
+CHART_URL = f"https://quickchart.io/chart?w={width}&h={height}&bkg=white&c="
 
 
 def get_stats(collection, view):
@@ -59,7 +61,7 @@ def get_chart_image(collection, view):
 		'options': {'plugins': {'outlabels': {'text': ''}}}
 	}
 
-	return redirect(f"https://quickchart.io/chart?bkg=white&c={json.dumps(data)}")
+	return redirect(CHART_URL + json.dumps(data))
 
 
 @app.route('/chart/<collection>/<view>')
