@@ -42,9 +42,18 @@ def get_stats(collection, view, labels):
 	return elems, cv.name
 
 
+def get_labels(request):
+	labels = request.args.get('l')
+
+	if labels:
+		return labels.split('|')
+
+	return default_labels
+
+
 @app.route('/chart-image/<collection>/<view>')
 def get_chart_image(collection, view):
-	labels = request.args.get('l') or default_labels
+	labels = get_labels(request)
 	elems, _ = get_stats(collection, view, labels)
 
 	data = {
@@ -70,8 +79,8 @@ def robots():
 
 @app.route('/chart/<collection>/<view>')
 def get_chart(collection, view):
-	dark_mode = request.args.get('dark') or False
-	labels = request.args.get('l') or default_labels
+	dark_mode = 'dark' in request.args
+	labels = get_labels(request)
 	elems, title = get_stats(collection, view, labels)
 
 	return render_template('chart.html',

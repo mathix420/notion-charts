@@ -36,6 +36,13 @@
           'height': height
         };
 
+        {% if dark_mode %}
+          options['titleTextStyle'] = {color: 'white'};
+          options['backgroundColor'] = 'rgb(47, 52, 55)';
+          options['legend'] = {textStyle: {color: 'white'}};
+          options['pieSliceBorderColor'] = 'rgb(47, 52, 55)';
+        {% endif %}
+
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
@@ -51,11 +58,11 @@
         padding: 0;
       }
 
-      {% if dark_mode %}
+      
         html {
-          background-color: rgb(47, 52, 55);
+          background-color: ;
         }
-      {% endif %}
+      
 
       #chart_div {
         margin: 0;
