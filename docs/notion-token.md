@@ -1,7 +1,7 @@
 # How to get notion token_v2
 
 1. Go to [notion.so](https://notion.so/)
-2. Press **F12** and follow instruction bellow
+2. Press **F12** and follow instruction below
     - **Chrome** users
         - **Application** then **Cookies** then **https://www.notion.so**
     - **Firefox** users

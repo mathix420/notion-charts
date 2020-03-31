@@ -4,14 +4,14 @@
 
 ## Usage
 
-### For non-private notions
+### For public notions
 
 Simply use https://notion-charts.now.sh url, and follow the documentation below.
 
 ### For private notions
 
 You'll need to host your own version of this repository.
-The best way to do that is by clicking this button bellow, it will automatically host this API on [zeit.co](https://zeit.co/) which is **100% free**.
+The best way to do that is by clicking this button below, it will automatically host this API on [zeit.co](https://zeit.co/) which is **100% free**.
 
 <details>
   <summary>Show me the steps</summary>
@@ -20,7 +20,7 @@ The best way to do that is by clicking this button bellow, it will automatically
   2. Zeit is now opened, click **Continue**
   2. Then if you don't already have an account click **Sign Up** in the top right corner
   3. Choose a name for your project, keep in mind that this name will goes in your url `https://YOUR-PROJECT-NAME.now.sh`
-  4. Don't forget to put your notion `TOKEN_V2` before clicking **Continue** [If you don't know how to get it, click here](/notion-token.md)
+  4. Don't forget to put your notion `TOKEN_V2` before clicking **Continue** [If you don't know how to get it, click here](/docs/notion-token.md)
   5. Click **Continue** one more time, and you're done!
 
 </details>
@@ -32,6 +32,14 @@ Then when the hosting is completed simply follow documentation instructions belo
 
 ## Documentation
 
+### Split notion url
+
+> https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e7698cee6aff
+>
+> collection_id = fa9b093633c0479f886fdb857f57f9b0
+>
+> view_id = c94a0043c3df410cb461e7698cee6aff
+
 ### Image charts
 
 ```
@@ -39,9 +47,11 @@ Then when the hosting is completed simply follow documentation instructions belo
 ```
 Example:
 
-> https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e7698cee6aff
+> Inital page => https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e7698cee6aff
 >
-> => https://notion-charts.now.sh/chart-image/fa9b093633c0479f886fdb857f57f9b0/c94a0043c3df410cb461e7698cee6aff
+> Charts => https://notion-charts.now.sh/chart-image/fa9b093633c0479f886fdb857f57f9b0/c94a0043c3df410cb461e7698cee6aff
+
+Simply paste the chart url in your notion and click **Embbed** 
 
 ### Interactive charts
 
@@ -50,14 +60,14 @@ Example:
 ```
 Examples:
 
-> https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e7698cee6aff
+> Inital page => https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e7698cee6aff
 >
-> => https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/c94a0043c3df410cb461e7698cee6aff
+> Charts => https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/c94a0043c3df410cb461e7698cee6aff
 
 
-> https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=f1b7adb289cc4da3aa7ee6b8ac68470e
+> Inital page => https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=f1b7adb289cc4da3aa7ee6b8ac68470e
 >
-> => https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/f1b7adb289cc4da3aa7ee6b8ac68470e
+> Charts => https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/f1b7adb289cc4da3aa7ee6b8ac68470e
 
 ## Open for contributions
 
