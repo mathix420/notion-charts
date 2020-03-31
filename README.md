@@ -2,6 +2,34 @@
 
 ![image](/example.png)
 
+## Usage
+
+### For non-private notions
+
+Simply use https://notion-charts.now.sh url, and follow the documentation below.
+
+### For private notions
+
+You'll need to host your own version of this repository.
+The best way to do that is by clicking this button bellow, it will automatically host this API on [zeit.co](https://zeit.co/) which is **100% free**.
+
+<details>
+  <summary>Show me the steps</summary>
+
+  1. Click the blue **Deploy** button on this page
+  2. Zeit is now opened, click **Continue**
+  2. Then if you don't already have an account click **Sign Up** in the top right corner
+  3. Choose a name for your project, keep in mind that this name will goes in your url `https://YOUR-PROJECT-NAME.now.sh`
+  4. Don't forget to put your notion `TOKEN_V2` before clicking **Continue** [If you don't know how to get it, click here](/notion-token.md)
+  5. Click **Continue** one more time, and you're done!
+
+</details>
+
+Then when the hosting is completed simply follow documentation instructions below and enjoy 😎
+
+[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/mathix420/notion-charts)
+
+
 ## Documentation
 
 ### Image charts
