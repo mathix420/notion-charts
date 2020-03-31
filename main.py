@@ -1,62 +1,58 @@
-import json
-import requests
-from os import getenv
+from flask import Flask, render_template, redirect, request
 from notion.client import NotionClient
-from flask import Flask, render_template, redirect
+from os import getenv
+
+import requests
+import json
+
 
 app = Flask(__name__)
 
 width = 380
 height = 220
-labels = ['Done', 'In Progress', 'Todo']
+default_labels = ['Not Started', 'In Progress', 'Done']
 
 client = NotionClient(token_v2=getenv('TOKEN_V2'))
 URL_BASE = 'https://www.notion.so/businesstime/{}?v={}'
 CHART_URL = f"https://quickchart.io/chart?w={width}&h={height}&bkg=white&c="
 
 
-def get_stats(collection, view):
+def get_stats(collection, view, labels):
 	try:
 		cv = client.get_collection_view(URL_BASE.format(collection, view))
 	except Exception as e:
 		if str(e) == 'Invalid collection view URL':
 			raise Exception('Bad view')
-		else:
-			raise
+		raise
 
-	todo, done, en_cours = 0, 0, 0
-
+	elems = {label: 0 for label in labels}
 	rows = cv.default_query().execute()
 
 	for row in rows:
-		if row.status == 'In Progress':
-			en_cours += 1
-		elif row.status == 'Not Started':
-			todo += 1
+		if row.status in elems:
+			elems[row.status] += 1
 		else:
-			done += 1
+			elems[list(elems.keys())[-1]] += 1
 
-	d = done / len(rows) * 100
-	p = en_cours / len(rows) * 100
-	t = todo / len(rows) * 100
-	return d, p, t, cv.name
+	elems = dict(map(
+		lambda kv: (kv[0], kv[1] / len(rows) * 100),
+		elems.items()
+	))
 
-
-@app.route('/robots.txt')
-def robots():
-	return 'User-agent: *\nDisallow: /'
+	return elems, cv.name
 
 
 @app.route('/chart-image/<collection>/<view>')
 def get_chart_image(collection, view):
-	d, p, t, _ = get_stats(collection, view)
+	labels = request.args.get('l') or default_labels
+	elems, _ = get_stats(collection, view, labels)
 
 	data = {
 		'type': 'pie',
 		'data': {
-			'labels': labels,
+				'labels': list(elems.keys()),
 			'borderWidth': 0,
-			'datasets': [{'data': [d, p, t]}]
+			'datasets': [{'data': list(elems.values())}]
 		},
 		'options': {
 			'plugins': {'outlabels': {'text': ''}},
@@ -67,22 +63,27 @@ def get_chart_image(collection, view):
 	return redirect(CHART_URL + json.dumps(data))
 
 
+@app.route('/robots.txt')
+def robots():
+	return 'User-agent: *\nDisallow: /'
+
+
 @app.route('/chart/<collection>/<view>')
 def get_chart(collection, view):
-	d, p, t, title = get_stats(collection, view)
+	dark_mode = request.args.get('dark') or False
+	labels = request.args.get('l') or default_labels
+	elems, title = get_stats(collection, view, labels)
 
-	return render_template('chart.html', datas=json.dumps([
-		[labels[0], d],
-		[labels[1], p],
-		[labels[2], t]
-	]), title=title)
+	return render_template('chart.html',
+		datas=json.dumps(list(elems.items())),
+		dark_mode=dark_mode,
+		title=title,
+	)
 
 
 @app.route('/')
 def home():
-	return '''Visit <a href="https://github.com/mathix420/notion-charts">
-github.com/notion-charts
-</a> for documentation.'''
+	return render_template('index.html')
 
 
 if __name__ == "__main__":
