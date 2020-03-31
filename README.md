@@ -2,6 +2,14 @@
 
 ![image](/example.png)
 
+<details>
+  <summary>See other examples</summary>
+  
+  ### Business Dashboard
+  ![Business Dashboard](https://i.redd.it/9i9pkp1wbvp41.png)
+  
+</details>
+
 ## Usage
 
 ### For public notions
