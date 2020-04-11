@@ -90,11 +90,9 @@ You can use custom columns name with the `l` parameter
 
 Example:
 
-> Inital page => https://www.notion.so/049c3ee811c344868b78d043e152241b?
-v=376b00ef4b634a7f9b51ee78bc361e15
+> Inital page => https://www.notion.so/049c3ee811c344868b78d043e152241b?v=376b00ef4b634a7f9b51ee78bc361e15
 >
-> Chart => https://notion-charts.now.sh/chart/049c3ee811c344868b78d043e152241b/
-376b00ef4b634a7f9b51ee78bc361e15?l=Next Up|In Progress|Completed
+> Chart => https://notion-charts.now.sh/chart/049c3ee811c344868b78d043e152241b/376b00ef4b634a7f9b51ee78bc361e15?l=Next%20Up|In%20Progress|Completed
 
 
 ### Dark-mode
@@ -106,10 +104,9 @@ Dark-mode is only available for interactive charts.
 ```
 
 Examples:
-> https://notion-charts.now.sh/chart/049c3ee811c344868b78d043e152241b/
-376b00ef4b634a7f9b51ee78bc361e15?l=Next Up|In Progress|Completed&dark
-> https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/
-c94a0043c3df410cb461e7698cee6aff?dark
+> https://notion-charts.now.sh/chart/049c3ee811c344868b78d043e152241b/376b00ef4b634a7f9b51ee78bc361e15?l=Next%20Up|In%20Progress|Completed&dark
+>
+> https://notion-charts.now.sh/chart/fa9b093633c0479f886fdb857f57f9b0/c94a0043c3df410cb461e7698cee6aff?dark
 
 
 ## Open for contributions
