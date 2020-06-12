@@ -33,7 +33,7 @@ The best way to do that is by clicking this button below, it will automatically 
 
 </details>
 
-Then when the hosting is completed simply follow documentation instructions below and enjoy 😎
+Then when the hosting is completed simply follow documentation instructions below and enjoy 😎 
 Don't forget to use your URL instead of `notion-charts.now.sh`.
 
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/mathix420/notion-charts)
