@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard.js@1.0.1/dist/clipboard.min.js"
+        integrity="sha256-HUQP8SUHMJ/pHYah14Em47rjRwTvxaADBSuOJI9DuiU=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+    <title>Notion charts</title>
+    <style>
+        .main {
+            display: flex;
+            color: white;
+            text-align: center;
+            background: #141E30;
+            background: -webkit-linear-gradient(to right, #243B55, #141E30);
+            background: linear-gradient(to right, #243B55, #141E30);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main>div {
+            width: 50vw;
+            max-width: 500px;
+            min-width: 250px;
+        }
+
+        #image {
+            height: 200px;
+            min-width: 200px;
+            background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
+        }
+
+        #inter {
+            height: 200px;
+            width: 400px;
+            background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
+        }
+
+        .row {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Notion charts</h1>
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Notion URL</span>
+                </div>
+                <input id="input" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <p>
+            Visit <a href="https://github.com/mathix420/notion-charts">
+                github.com/notion-charts</a> for documentation.
+        </p>
+        <div id="display" style="display: none;">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true">Interactive</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                        aria-controls="pills-profile" aria-selected="false">Image</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <iframe class="rounded row" id="inter" style="border: none;"></iframe>
+                    <button id="inter-btn" type="button" onclick="Clipboard.copy(itr)" class="row btn btn-dark">Copy
+                        link</button>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <img class="row rounded img-fluid" id="image" alt="Chart preview">
+                    <button id="image-btn" type="button" onclick="Clipboard.copy(img)" class="row btn btn-dark">Copy
+                        link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("input").addEventListener('input', handleInputs)
+        let itr, img;
+
+        const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm
+
+        function handleInputs(event) {
+            console.log("IN", event.target.value)
+            regex.lastIndex = 0;
+            if (!regex.test(event.target.value)) {
+                console.log("QUIT");
+                document.getElementById("display").style.display = 'none';
+                return;
+            }
+            console.log("OK");
+            regex.lastIndex = 0;
+            const res = regex.exec(event.target.value);
+            img = `https://notion-charts.now.sh/chart-image/${res[1] || ""}/${res[2] || ""}`;
+            itr = `https://notion-charts.now.sh/chart/${res[1] || ""}/${res[2] || ""}`;
+            document.getElementById("image").src = img;
+            document.getElementById("inter").src = itr;
+            document.getElementById("display").style.display = 'contents';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

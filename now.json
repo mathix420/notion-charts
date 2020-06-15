@@ -1,12 +1,13 @@
 {
     "version": 2,
     "builds": [
-        { "src": "main.py", "use": "@now/python" }
+        { "src": "main.py", "use": "@now/python" },
+        { "src": "/public/**", "use": "@now/static"}
     ],
     "routes": [
-        {
-            "handle": "filesystem"
-        },
+        { "handle": "filesystem" },
+        { "src": "/", "dest": "/public/index.html" },
+        { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
         {
             "src": "^(/.*)",
             "methods": ["GET", "HEAD"],
