@@ -72,11 +72,6 @@ def get_chart_image(collection, view):
 	return redirect(CHART_URL + json.dumps(data))
 
 
-@app.route('/robots.txt')
-def robots():
-	return 'User-agent: *\nDisallow: /'
-
-
 @app.route('/chart/<collection>/<view>')
 def get_chart(collection, view):
 	dark_mode = 'dark' in request.args
@@ -88,11 +83,6 @@ def get_chart(collection, view):
 		dark_mode=dark_mode,
 		title=title,
 	)
-
-
-@app.route('/')
-def home():
-	return render_template('index.html')
 
 
 if __name__ == "__main__":
