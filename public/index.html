@@ -100,14 +100,11 @@
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm
 
         function handleInputs(event) {
-            console.log("IN", event.target.value)
             regex.lastIndex = 0;
             if (!regex.test(event.target.value)) {
-                console.log("QUIT");
                 document.getElementById("display").style.display = 'none';
                 return;
             }
-            console.log("OK");
             regex.lastIndex = 0;
             const res = regex.exec(event.target.value);
             img = `https://notion-charts.now.sh/chart-image/${res[1] || ""}/${res[2] || ""}`;
