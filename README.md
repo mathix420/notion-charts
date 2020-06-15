@@ -19,7 +19,7 @@ Simply use https://notion-charts.now.sh url, and follow the documentation below.
 ### For private notions
 
 You'll need to host your own version of this repository.
-The best way to do that is by clicking this button below, it will automatically host this API on [zeit.co](https://zeit.co/) which is **100% free**.
+The best way to do that is by clicking this button below, it will automatically host this API on [vercel.com](https://vercel.com/) which is **100% free**.
 
 <details>
   <summary>Show me the steps</summary>
@@ -40,6 +40,8 @@ Don't forget to use your URL instead of `notion-charts.now.sh`.
 
 
 ## Documentation
+
+For fast and easy previews you can now [go directly here](https://notion-charts.now.sh).
 
 ### Split notion url
 
