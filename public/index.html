@@ -34,14 +34,14 @@
         }
 
         #image {
-            height: 200px;
-            min-width: 200px;
+            height: 220px;
+            width: 380px;
             background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
         }
 
         #inter {
-            height: 200px;
-            width: 400px;
+            height: 220px;
+            width: 380px;
             background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
         }
 
@@ -81,13 +81,18 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <iframe class="rounded row" id="inter" style="border: none;"></iframe>
-                    <button id="inter-btn" type="button" onclick="Clipboard.copy(itr)" class="row btn btn-dark">Copy
-                        link</button>
+                    <button id="inter-btn" type="button" onclick="Clipboard.copy(itr)" class="row btn btn-dark">
+                        Copy link
+                    </button>
+                    <button id="inter-btn" type="button" onclick="Clipboard.copy(itr + '?dark')" class="row btn btn-dark">
+                        Copy link (dark)
+                    </button>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <img class="row rounded img-fluid" id="image" alt="Chart preview">
-                    <button id="image-btn" type="button" onclick="Clipboard.copy(img)" class="row btn btn-dark">Copy
-                        link</button>
+                    <button id="image-btn" type="button" onclick="Clipboard.copy(img)" class="row btn btn-dark">
+                        Copy link
+                    </button>
                 </div>
             </div>
         </div>
@@ -97,7 +102,7 @@
         document.getElementById("input").addEventListener('input', handleInputs)
         let itr, img;
 
-        const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm
+        const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm
 
         function handleInputs(event) {
             regex.lastIndex = 0;
