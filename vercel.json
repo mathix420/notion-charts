@@ -17,12 +17,10 @@
     ],
     "build": {
         "env": {
-            "NOTION_DATA_DIR": "/tmp/notion-py",
-            "TOKEN_V2": "@token_v2"
+            "NOTION_DATA_DIR": "/tmp/notion-py"
         }
     },
     "env": {
-        "NOTION_DATA_DIR": "/tmp/notion-py",
-        "TOKEN_V2": "@token_v2"
+        "NOTION_DATA_DIR": "/tmp/notion-py"
     }
 }
