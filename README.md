@@ -36,7 +36,7 @@ The best way to do that is by clicking this button below, it will automatically 
 Then when the hosting is completed simply follow documentation instructions below and enjoy 😎 
 Don't forget to use your URL instead of `notion-charts.now.sh`.
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/mathix420/notion-charts)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fmathix420%2Fnotion-charts&env=TOKEN_V2&envDescription=Enter%20your%20notion%20%60token_v2%60%20cookie.&envLink=https%3A%2F%2Fgithub.com%2Fmathix420%2Fnotion-charts%2Fblob%2Fmaster%2Fdocs%2Fnotion-token.md&project-name=notion-charts&repo-name=notion-charts)
 
 
 ## Documentation
