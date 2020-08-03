@@ -1,8 +1,6 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, abort
 from notion.client import NotionClient
 from os import getenv
-
-import requests
 import json
 
 
@@ -33,6 +31,9 @@ def get_stats(collection, view, labels):
 			elems[row.status] += 1
 		else:
 			elems[list(elems.keys())[-1]] += 1
+
+	if not len(rows):
+		abort(418, 'Cannot handle non-TODO databases.')
 
 	elems = dict(map(
 		lambda kv: (kv[0], kv[1] / len(rows) * 100),
@@ -83,7 +84,6 @@ def get_chart(collection, view):
 		dark_mode=dark_mode,
 		title=title,
 	)
-
 
 if __name__ == "__main__":
 	app.run()
