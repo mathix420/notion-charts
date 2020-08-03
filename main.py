@@ -19,7 +19,7 @@ def remove_non_ascii(string):
     return bytes(string, 'utf-8').decode('ascii', 'ignore')
 
 
-def get_stats(collection, view, labels):
+def get_stats(collection, view, labels, prop):
     try:
         cv = client.get_collection_view(URL_BASE.format(collection, view))
     except Exception as e:
@@ -30,15 +30,20 @@ def get_stats(collection, view, labels):
     elems = {label: 0 for label in labels}
     rows = cv.default_query().execute()
 
-    if not rows or not 'status' in rows[0].get_all_properties():
-        abort(404, 'No status found in the response.')
+    if not rows or not prop in rows[0].get_all_properties():
+        abort(404, f'No {prop} found in the response.')
 
     for row in rows:
-        status = row.status.split(',')[0]
-        if status in elems:
-            elems[status] += 1
-        else:
-            elems[list(elems.keys())[-1]] += 1
+        values = row.get_property(prop)
+        if not values:
+            continue
+        elif not isinstance(values, list):
+            values = values.split(',')
+        for value in values:
+            if value in elems:
+                elems[value] += 1
+            else:
+                elems[list(elems.keys())[-1]] += 1
 
     return elems, cv.name
 
@@ -55,7 +60,8 @@ def get_labels(request):
 @app.route('/chart-image/<collection>/<view>')
 def get_chart_image(collection, view):
     labels = get_labels(request)
-    elems, _ = get_stats(collection, view, labels)
+    selector = request.args.get('p', 'status')
+    elems, _ = get_stats(collection, view, labels, selector)
 
     data = {
         'type': 'pie',
@@ -77,13 +83,14 @@ def get_chart_image(collection, view):
 def get_chart(collection, view):
     dark_mode = 'dark' in request.args
     labels = get_labels(request)
-    elems, title = get_stats(collection, view, labels)
+    selector = request.args.get('p', 'status')
+    elems, title = get_stats(collection, view, labels, selector)
 
     return render_template(
         'chart.html',
         datas=json.dumps(list(elems.items())),
         dark_mode=dark_mode,
-        title=title,
+        title=request.args.get('title', title),
     )
 
 
