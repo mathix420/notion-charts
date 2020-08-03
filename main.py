@@ -30,8 +30,8 @@ def get_stats(collection, view, labels):
     elems = {label: 0 for label in labels}
     rows = cv.default_query().execute()
 
-    if not rows:
-        abort(418, 'Cannot handle non-TODO databases.')
+    if not rows or not 'status' in rows[0].get_all_properties():
+        abort(404, 'No status found in the response.')
 
     for row in rows:
         status = row.status.split(',')[0]
