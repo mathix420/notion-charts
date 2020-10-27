@@ -113,8 +113,8 @@
             }
             regex.lastIndex = 0;
             const res = regex.exec(event.target.value);
-            img = `https://notion-charts.now.sh/chart-image/${res[1] || ""}/${res[2] || ""}`;
-            itr = `https://notion-charts.now.sh/chart/${res[1] || ""}/${res[2] || ""}`;
+            img = `https://${window.location.hostname}/chart-image/${res[1] || ""}/${res[2] || ""}`;
+            itr = `https://${window.location.hostname}/chart/${res[1] || ""}/${res[2] || ""}`;
             document.getElementById("image").src = img;
             document.getElementById("inter").src = itr;
             document.getElementById("display").style.display = 'contents';
