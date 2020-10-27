@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, request, abort
+from requests.exceptions import HTTPError
 from notion.client import NotionClient
 from os import getenv
 import json
@@ -10,9 +11,15 @@ width = 380
 height = 220
 default_labels = ['Not Started', 'In Progress', 'Done']
 
-client = NotionClient(token_v2=getenv('TOKEN_V2'))
+try:
+    client = NotionClient(token_v2=getenv('TOKEN_V2'))
+except HTTPError as error:
+    if error.response.status_code == 401:
+        raise Exception('Bad Notion TOKEN_V2.')
+    raise error
+
 URL_BASE = 'https://www.notion.so/businesstime/{}?v={}'
-CHART_URL = f"https://quickchart.io/chart?w={width}&h={height}&bkg=white&c="
+CHART_URL = f'https://quickchart.io/chart?w={width}&h={height}&bkg=white&c='
 
 
 def remove_non_ascii(string):
@@ -94,5 +101,5 @@ def get_chart(collection, view):
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
