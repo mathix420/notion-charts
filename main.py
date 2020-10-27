@@ -1,18 +1,39 @@
-from flask import Flask, render_template, redirect, request, abort
+from flask import Flask, render_template, redirect, request, abort, jsonify
+from werkzeug.exceptions import HTTPException
+from requests.exceptions import HTTPError
 from notion.client import NotionClient
 from os import getenv
 import json
 
 
 app = Flask(__name__)
+g = {}
 
 width = 380
 height = 220
 default_labels = ['Not Started', 'In Progress', 'Done']
 
-client = NotionClient(token_v2=getenv('TOKEN_V2'))
+if 'client' not in g:
+    try:
+        print('init')
+        g['client'] = NotionClient(token_v2=getenv('TOKEN_V2'))
+    except HTTPError as error:
+        if error.response.status_code == 401:
+            g['error'] = 'Bad Notion TOKEN_V2.'
+        else:
+            g['error'] = error.strerror
+        g['client'] = None
+
 URL_BASE = 'https://www.notion.so/businesstime/{}?v={}'
-CHART_URL = f"https://quickchart.io/chart?w={width}&h={height}&bkg=white&c="
+CHART_URL = f'https://quickchart.io/chart?w={width}&h={height}&bkg=white&c='
+
+
+def get_client():
+    if not g['client'] and 'error' in g:
+        raise Exception(g['error'])
+    elif not g['client']:
+        raise Exception('No client.')
+    return g['client']
 
 
 def remove_non_ascii(string):
@@ -21,7 +42,7 @@ def remove_non_ascii(string):
 
 def get_stats(collection, view, labels, prop):
     try:
-        cv = client.get_collection_view(URL_BASE.format(collection, view))
+        cv = get_client().get_collection_view(URL_BASE.format(collection, view))
     except Exception as e:
         if str(e) == 'Invalid collection view URL':
             raise Exception('Bad view')
@@ -55,6 +76,14 @@ def get_labels(request):
         return labels.split('|')
 
     return default_labels
+
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    code = 500
+    if isinstance(e, HTTPException):
+        code = e.code
+    return jsonify(error=str(e)), code
 
 
 @app.route('/chart-image/<collection>/<view>')
@@ -94,5 +123,5 @@ def get_chart(collection, view):
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()

@@ -12,6 +12,13 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/png">
     <title>Notion charts</title>
     <style>
+        html, body {
+            background: #141E30;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
         .main {
             display: flex;
             color: white;
@@ -22,8 +29,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            width: 100vw;
+            height: 100%;
             padding: 0;
             margin: 0;
         }
@@ -48,6 +54,12 @@
 
         .row {
             margin: 5px 0;
+        }
+
+        footer {
+            position: absolute;
+            opacity: .5;
+            bottom: 0;
         }
     </style>
 </head>
@@ -97,28 +109,40 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <p>
+                Built by <a href="https://mathix.ninja/" target="_blank" rel="noopener">Arnaud Gissinger</a>
+            </p>
+        </footer>
     </div>
 
     <script>
-        document.getElementById("input").addEventListener('input', handleInputs)
         let itr, img;
 
-        const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm
+        const base_url = window.location.hostname !== 'localhost' ? `https://${window.location.hostname}`: `http://${window.location.host}`;
+        const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
+        const iframe = document.getElementById("inter");
+        const display = document.getElementById("display");
 
         function handleInputs(event) {
             regex.lastIndex = 0;
             if (!regex.test(event.target.value)) {
-                document.getElementById("display").style.display = 'none';
+                display.style.display = 'none';
                 return;
             }
             regex.lastIndex = 0;
             const res = regex.exec(event.target.value);
-            img = `https://notion-charts.now.sh/chart-image/${res[1] || ""}/${res[2] || ""}`;
-            itr = `https://notion-charts.now.sh/chart/${res[1] || ""}/${res[2] || ""}`;
+            img = `${base_url}/chart-image/${res[1] || ""}/${res[2] || ""}`;
+            itr = `${base_url}/chart/${res[1] || ""}/${res[2] || ""}`;
+
             document.getElementById("image").src = img;
-            document.getElementById("inter").src = itr;
-            document.getElementById("display").style.display = 'contents';
+            if (iframe.src)
+                iframe.contentWindow.location.replace(itr);
+            else
+                iframe.src = itr;
+            display.style.display = 'contents';
         }
+        document.getElementById("input").addEventListener('input', handleInputs);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
