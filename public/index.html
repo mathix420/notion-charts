@@ -120,7 +120,7 @@
     </div>
 
     <script>
-        let itr, img;
+        let itr, img, tid;
 
         const base_url = window.location.hostname !== 'localhost' ? `https://${window.location.hostname}`: `http://${window.location.host}`;
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
@@ -141,9 +141,6 @@
             img = `${base_url}/chart-image/${res[1] || ""}/${res[2] || ""}`;
             itr = `${base_url}/chart/${res[1] || ""}/${res[2] || ""}`;
 
-            clearTimeout(tid);
-            timeInfo.style.display = 'none';
-
             document.getElementById("image").src = img;
             if (iframe.src)
                 iframe.contentWindow.location.replace(itr);
@@ -152,6 +149,10 @@
             display.style.display = 'contents';
         }
         document.getElementById("input").addEventListener('input', handleInputs);
+        iframe.addEventListener("load", () => {
+            clearTimeout(tid);
+            timeInfo.style.display = 'none';
+        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
