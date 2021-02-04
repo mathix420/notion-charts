@@ -16,12 +16,14 @@ default_labels = ['Not Started', 'In Progress', 'Done']
 if 'client' not in g:
     try:
         print('init')
+        # Could use this but we need caching and the endpoint is heavily rate limited
+        # email='', password=''
         g['client'] = NotionClient(token_v2=getenv('TOKEN_V2'))
     except HTTPError as error:
         if error.response.status_code == 401:
             g['error'] = 'Bad Notion TOKEN_V2.'
         else:
-            g['error'] = error.strerror
+            g['error'] = str(error)
         g['client'] = None
 
 URL_BASE = 'https://www.notion.so/businesstime/{}?v={}'
