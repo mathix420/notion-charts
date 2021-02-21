@@ -8,11 +8,13 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/clipboard.js@1.0.1/dist/clipboard.min.js"
         integrity="sha256-HUQP8SUHMJ/pHYah14Em47rjRwTvxaADBSuOJI9DuiU=" crossorigin="anonymous"></script>
-    <meta name="description" content="Notion charts is the simplest way to build charts for and from your Notion.so worskpace.">
+    <meta name="description"
+        content="Notion charts is the simplest way to build charts for and from your Notion.so worskpace.">
     <link rel="shortcut icon" href="/favicon.ico" type="image/png">
     <title>Notion charts</title>
     <style>
-        html, body {
+        html,
+        body {
             background: #141E30;
             height: 100%;
             padding: 0;
@@ -54,6 +56,17 @@
 
         .row {
             margin: 5px 0;
+        }
+
+        #new-version {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .alert .close {
+            margin-left: 15px;
         }
 
         footer {
@@ -118,11 +131,19 @@
             </p>
         </footer>
     </div>
+    <a id="new-version" href="https://notion-charts-git-multicharts-mathix420.vercel.app/">
+        <div class="alert alert-primary" role="alert">
+            Check the new multi-charts version (BETA).
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </a>
 
     <script>
         let itr, img, tid;
 
-        const base_url = window.location.hostname !== 'localhost' ? `https://${window.location.hostname}`: `http://${window.location.host}`;
+        const base_url = window.location.hostname !== 'localhost' ? `https://${window.location.hostname}` : `http://${window.location.host}`;
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
         const iframe = document.getElementById("inter");
         const display = document.getElementById("display");
