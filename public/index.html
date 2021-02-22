@@ -90,7 +90,7 @@
         </p>
         <div class="tab-content">
             <div class="chart-type mb-3">
-                <select class="form-select" aria-label="ChartType">
+                <select class="form-select" id="chart-type" aria-label="ChartType">
                     <option value="PieChart" selected>Pie Chart</option>
                     <option value="DonutChart">Donut Chart</option>
                     <option value="AreaChart">Area Chart</option>
@@ -149,6 +149,7 @@
         const base_url = window.location.origin;
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
         const display = document.getElementById("display");
+        const chartType = document.getElementById("chart-type");
         const timeInfo = document.getElementById("long-time-info");
 
         const main = document.querySelector('.tab-content');
@@ -202,7 +203,7 @@
                     const action = el.querySelector('.action').value;
                     return name + ':' + field + ':' + action;
                 });
-            Clipboard.copy(base_url + '/schema-chart/' + (res[1] || "") + '/' + (res[2] || "") + '?s=' + data.join(','))
+            Clipboard.copy(base_url + '/schema-chart/' + (res[1] || "") + '/' + (res[2] || "") + '?s=' + data.join(',') + '&t=' + chartType.value);
         }
 
         document.getElementById("input").addEventListener('input', handleInputs);

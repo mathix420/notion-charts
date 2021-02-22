@@ -169,7 +169,7 @@ def build_schema_chart(collection, view):
                 datas[-1][i] = sum(map(lambda x: int(x[field]), group))
             else:
                 values = set(map(lambda x: x[field], group))
-                datas[-1][i] = ','.join(values)
+                datas[-1][i] = ','.join(map(str, values)) if len(values) > 1 else (list(values) or [''])[0]
 
     return render_template(
         'schema.html',
