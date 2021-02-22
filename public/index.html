@@ -61,8 +61,15 @@
         #new-version {
             position: absolute;
             top: 10px;
+            max-width: 392px;
+            width: calc(100vw - 10px);
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .alert {
+            display: flex;
+            justify-content: space-between;
         }
 
         .alert .close {
