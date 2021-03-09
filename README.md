@@ -42,6 +42,18 @@ Don't forget to use your URL instead of `charts.mathix.ninja`.
 
 If you want to stay up to date I will recommend you to use a [Deploy Hook](https://vercel.com/docs/v2/more/deploy-hooks).
 
+
+## New Example
+
+Pokedex normal types Candle-Stick chart
+
+**Original:** [notion.so/8653464567ff4a91b89ac3d3a6ab78af](https://notion.so/8653464567ff4a91b89ac3d3a6ab78af)
+
+**Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
+
+https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
+
+
 ## Documentation
 
 For fast and easy previews you can now [go directly here](https://charts.mathix.ninja).
