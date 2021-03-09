@@ -203,7 +203,7 @@
                     const action = el.querySelector('.action').value;
                     return name + ':' + field + ':' + action;
                 });
-            Clipboard.copy(base_url + '/schema-chart/' + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(data.join(',')) + '&t=' + chartType.value);
+            Clipboard.copy(base_url + '/schema-chart/' + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(encodeURIComponent(data.join(','))) + '&t=' + chartType.value);
         }
 
         document.getElementById("input").addEventListener('input', handleInputs);
