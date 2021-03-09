@@ -1,2 +1,2 @@
-git+git://github.com/mathix420/notion-py.git@0e7b7d40fa079e0cb41236458f19cadb54539c26
+git+git://github.com/mathix420/notion-py.git@54e2e66f53f9278c51b7a32e966b2305b52edd47
 Flask>=1.1.1
