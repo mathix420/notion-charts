@@ -107,7 +107,7 @@
                 </select>
             </div>
 
-            <div class="column">
+            <div class="column" id="main-content">
                 <div class="input-group mb-3 chart-data">
                     <input type="text" class="form-control name" placeholder="Title" aria-label="Title">
                     <span class="input-group-text">:</span>
@@ -144,7 +144,7 @@
     </footer>
 
     <script>
-        let res, childs, firstColumnSav;
+        let res, firstColumnSav;
 
         const base_url = window.location.origin;
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
@@ -154,7 +154,7 @@
 
         const main = document.querySelector('.tab-content');
         const fields = document.getElementById('fields');
-        const firstColumn = main.querySelector('.column > .chart-data');
+        const firstColumn = main.querySelector('#main-content > .chart-data');
 
         function handleInputs(event) {
             regex.lastIndex = 0;
@@ -167,24 +167,38 @@
 
             display.style.display = 'contents';
 
+            // Show loader, remove all column except first and remove fields
+            removeAllColumns()
+            fields.innerHTML = '';
+            document.querySelector('.column + .btn-group').style.opacity = 0;
+            document.querySelector('.column + .btn-group + .loader').style.opacity = 1;
+
+            // Get new fields
             fetch(base_url + '/notion-schema/' + (res[1] || "") + '/' + (res[2] || ""))
                 .then(function (res) {
                     return res.json();
                 })
                 .then(function (json) {
-                    childs = json.columns.map(function (column) {
+                    json.columns.map(function (column) {
                         const opt = document.createElement('option');
                         opt.innerText = column.name;
                         opt.value = column.id;
                         return opt;
-                    });
-                    childs.forEach(function (child) {
+                    }).forEach(function (child) {
                         fields.appendChild(child);
                         firstColumnSav = firstColumn.cloneNode(true);
                     });
+                    // Show content, hide loader
                     document.querySelector('.column + .btn-group').style.opacity = 1;
                     document.querySelector('.column + .btn-group + .loader').style.opacity = 0;
                 });
+        }
+
+        function removeAllColumns() {
+            const container = document.getElementById('main-content');
+            while (container.childElementCount > 1) {
+                container.lastChild.remove();
+            }
         }
 
         function addColumn() {
