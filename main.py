@@ -55,7 +55,7 @@ def get_stats(collection, view, labels, prop):
     rows = cv.default_query().execute()
 
     if not rows or not prop in [x['slug'] for x in rows[0].schema]:
-        abort(404, f'No {prop} found in the response.')
+        abort(418, f'Prop `{prop}` not found in the row.')
 
     for row in rows:
         values = row.get_property(prop)
