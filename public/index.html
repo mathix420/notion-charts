@@ -89,6 +89,22 @@
             First load can take more time than usual (serverless).
         </p>
         <div class="tab-content">
+            <div class="row text-start">
+                <div class="form-check col">
+                    <input class="form-check-input" type="checkbox" value="" id="darkMode">
+                    <label class="form-check-label" for="darkMode">
+                        Dark mode
+                    </label>
+                </div>
+
+                <div class="form-check col">
+                    <input class="form-check-input" type="checkbox" value="" id="imageMode">
+                    <label class="form-check-label" for="imageMode">
+                        Image mode
+                    </label>
+                </div>
+            </div>
+
             <div class="chart-type mb-3">
                 <select class="form-select" id="chart-type" aria-label="ChartType">
                     <option value="PieChart" selected>Pie Chart</option>
@@ -156,6 +172,9 @@
         const fields = document.getElementById('fields');
         const firstColumn = main.querySelector('#main-content > .chart-data');
 
+        const darkMode = document.getElementById('darkMode');
+        const imageMode = document.getElementById('imageMode');
+
         function handleInputs(event) {
             regex.lastIndex = 0;
             if (!regex.test(event.target.value)) {
@@ -217,9 +236,17 @@
                     const action = el.querySelector('.action').value;
                     return name + ':' + field + ':' + action;
                 });
-            Clipboard.copy(base_url + '/schema-chart/' + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(encodeURIComponent(data.join(','))) + '&t=' + chartType.value);
+            const path = imageMode.checked ? '/image-chart/' : '/schema-chart/';
+            const appendix = darkMode.checked ? '&dark' : '';
+            Clipboard.copy(base_url + path + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(encodeURIComponent(data.join(','))) + '&t=' + chartType.value + appendix);
         }
 
+        imageMode.addEventListener('change', (event) => {
+            darkMode.disabled = event.target.checked;
+            if (event.target.checked) {
+                darkMode.checked = false;
+            }
+        });
         document.getElementById("input").addEventListener('input', handleInputs);
     </script>
 
