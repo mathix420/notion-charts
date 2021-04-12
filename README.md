@@ -135,7 +135,7 @@ https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e76
 
 - `ColumnName` => Display name of the selected Notion column.
 - `ColumnIndex` => Notion Index of the selected column.
-- `action` => Action to perform on the column data. (See [Actions](#Actions))
+- `action` => Action to perform on the column data. (See [Actions](#2-actions))
 
 
 ## Interactives charts
@@ -152,7 +152,7 @@ https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e76
 
 - `ColumnName` => Display name of the selected Notion column.
 - `ColumnIndex` => Notion Index of the selected column.
-- `action` => Action to perform on the column data. (See [Actions](#Actions))
+- `action` => Action to perform on the column data. (See [Actions](#2-actions))
 
 [OPTIONAL] `?dark` => If set in url, a Notion dark theme is applied.
 
