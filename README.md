@@ -47,11 +47,11 @@ Don't forget to use your URL instead of `charts.mathix.ninja`.
 If you want to stay up to date I recommend you to use a [Deploy Hook](https://vercel.com/docs/v2/more/deploy-hooks).
 
 
-## Principles
+# Principles
 
 > There is only 2 principles to understand in Notion Charts.
 
-### 1. The aggregator
+## 1. The aggregator
 
 > The first "column" you set-up on Notion Charts is called the aggregator.
 
@@ -61,7 +61,7 @@ For example if you have a database which contains peoples (`name`, `age`, `heigh
 
 By setting your aggregator to the `age` column all these people will be grouped by their ages. So if the second Notion Chart "column" is the `height` with the `avg` action, you will plot the average height by ages of your dataset.
 
-### 2. Actions
+## 2. Actions
 
 > Actions are performed on column datas, in order to obtain specific results.
 
