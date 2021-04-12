@@ -2,7 +2,7 @@
     "version": 2,
     "functions": {
         "api/main.py": {
-            "memory": 300,
+            "memory": 320,
             "maxDuration": 10,
             "includeFiles": "templates/**"
         }
