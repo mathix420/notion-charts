@@ -129,9 +129,9 @@ https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e76
 
 ### Query parameters
 
-[REQUIRED] `CHART_TYPE` => `line | bar | radar | doughnut | pie | polarArea | bubble | scatter`
+[REQUIRED] `t` => `line | bar | radar | doughnut | pie | polarArea | bubble | scatter`
 
-[REQUIRED] `SCHEMA` => [[`ColumnName:ColumnIndex:action`], ...]
+[REQUIRED] `s` => [[`ColumnName:ColumnIndex:action`], ...]
 
 - `ColumnName` => Display name of the selected Notion column.
 - `ColumnIndex` => Notion Index of the selected column.
@@ -146,15 +146,15 @@ https://www.notion.so/fa9b093633c0479f886fdb857f57f9b0?v=c94a0043c3df410cb461e76
 
 ### Query parameters
 
-[REQUIRED] `?t=CHART_TYPE` => `line | bar | radar | doughnut | pie | polarArea | bubble | scatter`
+[REQUIRED] `t` => `line | bar | radar | doughnut | pie | polarArea | bubble | scatter`
 
-[REQUIRED] `?s=SCHEMA` => [[`ColumnName:ColumnIndex:action`], ...]
+[REQUIRED] `s` => [[`ColumnName:ColumnIndex:action`], ...]
 
 - `ColumnName` => Display name of the selected Notion column.
 - `ColumnIndex` => Notion Index of the selected column.
 - `action` => Action to perform on the column data. (See [Actions](#2-actions))
 
-[OPTIONAL] `?dark` => If set in url, a Notion dark theme is applied.
+[OPTIONAL] `dark` => If set in url, a Notion dark theme is applied.
 
 # Open for contributions
 
