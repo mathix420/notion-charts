@@ -240,7 +240,7 @@
                 });
             const path = imageMode.checked ? '/image-chart/' : '/schema-chart/';
             const appendix = darkMode.checked ? '&dark' : '';
-            Clipboard.copy(base_url + path + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(encodeURIComponent(data.join(','))) + '&t=' + chartType.value + appendix);
+            Clipboard.copy(base_url + path + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(data.join(',')) + '&t=' + chartType.value + appendix);
         }
 
         imageMode.addEventListener('change', (event) => {

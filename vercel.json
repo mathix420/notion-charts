@@ -1,9 +1,12 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "main.py", "use": "@now/python" },
-        { "src": "/public/**", "use": "@now/static"}
-    ],
+    "functions": {
+        "api/main.py": {
+            "memory": 3008,
+            "maxDuration": 60,
+            "includeFiles": "templates/**"
+        }
+    },
     "routes": [
         { "handle": "filesystem" },
         { "src": "/", "dest": "/public/index.html" },
@@ -12,8 +15,7 @@
         {
             "src": "^(/.*)",
             "methods": ["GET", "HEAD"],
-            "dest": "main.py",
-            "continue": true
+            "dest": "api/main.py"
         }
     ],
     "build": {

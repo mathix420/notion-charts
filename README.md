@@ -4,7 +4,7 @@
 
 <details>
   <summary>See other examples</summary>
-  
+
   ### Business Dashboard
   ![Business Dashboard](https://i.redd.it/9i9pkp1wbvp41.png)
 
@@ -51,7 +51,7 @@ If you want to stay up to date I will recommend you to use a [Deploy Hook](https
 
 **Columns:** `Primary Type:value | HP:avg | Attack:avg | Defense:avg | Speed:avg`
 
-**Line chart:** https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/9201f4ac42814afdbcdbee910c919e3f/2eb8d4fb18184bfb8cc7cd7b8c5ef002?s=Type%253A%29P%257CF%253Avalue%252CHP%253AHkft%253Aavg%252CAttack%253AB%252F%29Q%253Aavg%252CDefense%253Aq%252B%252BI%253Aavg%252CSpeed%253A8CLR%253Aavg&t=LineChart&dark
+**Line chart:** https://charts.mathix.ninja/schema-chart/9201f4ac42814afdbcdbee910c919e3f/2eb8d4fb18184bfb8cc7cd7b8c5ef002?s=Type%253A%29P%257CF%253Avalue%252CHP%253AHkft%253Aavg%252CAttack%253AB%252F%29Q%253Aavg%252CDefense%253Aq%252B%252BI%253Aavg%252CSpeed%253A8CLR%253Aavg&t=LineChart&dark
 
 <details>
   <summary>See picture</summary>
@@ -66,7 +66,7 @@ If you want to stay up to date I will recommend you to use a [Deploy Hook](https
 
 **Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
 
-**Candle-Stick chart:** https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
+**Candle-Stick chart:** https://charts.mathix.ninja/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
 
 <details>
   <summary>See picture</summary>

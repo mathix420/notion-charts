@@ -1,13 +1,16 @@
 from flask import Flask, render_template, redirect, request, abort, jsonify
+from os.path import abspath, dirname, join, realpath
 from werkzeug.exceptions import HTTPException
 from requests.exceptions import HTTPError
 from notion.client import NotionClient
 from itertools import groupby
 from os import getenv
+import traceback
 import json
 
 
-app = Flask(__name__)
+dir_path = dirname(realpath(__file__))
+app = Flask(__name__, template_folder=join(dir_path, abspath('templates')))
 g = {}
 
 width = 380
@@ -150,6 +153,7 @@ def handle_error(e):
     code = 500
     if isinstance(e, HTTPException):
         code = e.code
+    print(traceback.format_exc())
     return jsonify(error=str(e)), code
 
 
@@ -177,6 +181,8 @@ def build_schema_chart(collection, view):
     dark_mode = 'dark' in request.args
     chart_type = request.args.get('t', 'PieChart')
     columns_schema = request.args.get('s', '').split(',')
+
+    print(collection, view, columns_schema)
 
     cv, datas = get_datas(collection, view, columns_schema)
 
