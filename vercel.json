@@ -10,7 +10,6 @@
     "routes": [
         { "handle": "filesystem" },
         { "src": "/", "dest": "/public/index.html" },
-        { "src": "/new", "dest": "/public/sucepute.html" },
         { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
         {
             "src": "^(/.*)",
