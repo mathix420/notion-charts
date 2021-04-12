@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/clipboard.js@1.0.1/dist/clipboard.min.js"
         integrity="sha256-HUQP8SUHMJ/pHYah14Em47rjRwTvxaADBSuOJI9DuiU=" crossorigin="anonymous"></script>
     <meta name="description"
@@ -21,37 +21,41 @@
             margin: 0;
         }
 
-        .main {
-            display: flex;
-            color: white;
-            text-align: center;
+        body {
+            height: unset;
+            min-height: 100%;
+            position: relative;
             background: #141E30;
             background: -webkit-linear-gradient(to right, #243B55, #141E30);
             background: linear-gradient(to right, #243B55, #141E30);
+
+            display: flex;
+            color: white;
+            text-align: center;
+
+            padding: 50px 5px;
+
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            padding: 0;
-            margin: 0;
         }
 
-        .main>div {
-            width: 50vw;
-            max-width: 500px;
-            min-width: 250px;
+        .btn-group {
+            transition: opacity .3s;
+            opacity: 0;
         }
 
-        #image {
-            height: 220px;
-            width: 380px;
-            background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
+        ul li button {
+            color: white;
         }
 
-        #inter {
-            height: 220px;
-            width: 380px;
-            background: url(https://res.cloudinary.com/doh5dnovv/image/upload/v1592242680/Rolling-1s-111px_vgtw3x.svg) center center no-repeat;
+        .notion-url {
+            max-width: 570px;
+        }
+
+        ::selection {
+            background-color: var(--bs-indigo);
+            color: white;
         }
 
         .row {
@@ -85,112 +89,191 @@
 </head>
 
 <body>
-    <div class="main">
-        <h1>Notion charts</h1>
-        <div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Notion URL</span>
-                </div>
-                <input id="input" type="text" class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
-            </div>
-        </div>
-        <p>
-            Visit <a href="https://github.com/mathix420/notion-charts">
-                github.com/notion-charts</a> for documentation.
-        </p>
-        <div id="display" style="display: none;">
-            <p style="display:none; opacity: 0.4;" id="long-time-info">
-                First load can take more time than usual (serverless).
-            </p>
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                        aria-controls="pills-home" aria-selected="true">Interactive</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                        aria-controls="pills-profile" aria-selected="false">Image</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <iframe class="rounded row" id="inter" style="border: none;"></iframe>
-                    <button type="button" onclick="Clipboard.copy(itr)" class="row btn btn-dark">
-                        Copy link
-                    </button>
-                    <button type="button" onclick="Clipboard.copy(itr + '?dark')" class="row btn btn-dark">
-                        Copy link (dark)
-                    </button>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <img class="row rounded img-fluid" id="image" alt="Chart preview">
-                    <button type="button" onclick="Clipboard.copy(img)" class="row btn btn-dark">
-                        Copy link
-                    </button>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <p>
-                Built by <a href="https://mathix.ninja/" target="_blank" rel="noopener">Arnaud Gissinger</a>
-            </p>
-        </footer>
+    <h1>
+        Notion charts
+        <span class="badge bg-secondary" style="font-size: 0.3em;">BETA</span>
+    </h1>
+    <div class="notion-url input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Notion URL</span>
+        <input id="input" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default">
     </div>
-    <a id="new-version" href="https://notion-charts-git-multicharts-mathix420.vercel.app/">
-        <div class="alert alert-primary" role="alert">
-            Check the new multi-charts version (BETA).
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    <p>
+        Visit <a href="https://github.com/mathix420/notion-charts">
+            github.com/notion-charts</a> for documentation.
+    </p>
+    <div id="display" style="display: none;">
+        <p style="display:none; opacity: 0.4;" id="long-time-info">
+            First load can take more time than usual (serverless).
+        </p>
+        <div class="tab-content">
+            <div class="row text-start">
+                <div class="form-check col">
+                    <input class="form-check-input" type="checkbox" value="" id="darkMode">
+                    <label class="form-check-label" for="darkMode">
+                        Dark mode
+                    </label>
+                </div>
+
+                <div class="form-check col">
+                    <input class="form-check-input" type="checkbox" value="" id="imageMode">
+                    <label class="form-check-label" for="imageMode">
+                        Image mode
+                    </label>
+                </div>
+            </div>
+
+            <div class="chart-type mb-3">
+                <select class="form-select" id="chart-type" aria-label="ChartType">
+                    <option value="PieChart" selected>Pie Chart</option>
+                    <option value="DonutChart">Donut Chart</option>
+                    <option value="AreaChart">Area Chart</option>
+                    <option value="LineChart">Line Chart</option>
+                    <option value="BubbleChart">Bubble Chart</option>
+                    <option value="SteppedAreaChart">Stepped Area Chart</option>
+                    <option value="TreeMap">Tree Map</option>
+                    <option value="CandlestickChart">Candlestick Chart</option>
+                    <option value="BarChart">Bar Chart</option>
+                    <option value="ComboChart">Combo Chart</option>
+                    <option value="ColumnChart">Column Chart</option>
+                    <option value="ScatterChart">Scatter Chart</option>
+                    <option value="Map">Map</option>
+                </select>
+            </div>
+
+            <div class="column" id="main-content">
+                <div class="input-group mb-3 chart-data">
+                    <input type="text" class="form-control name" placeholder="Title" aria-label="Title">
+                    <span class="input-group-text">:</span>
+                    <select id="fields" class="form-select field" placeholder="Notion field" aria-label="Notion field">
+                    </select>
+                    <span class="input-group-text">:</span>
+                    <select class="form-select action" aria-label="Action">
+                        <option value="value" selected>Value</option>
+                        <option value="count">Count</option>
+                        <option value="avg">Average</option>
+                        <option value="sum">Sum</option>
+                    </select>
+                    <span class="input-group-text">
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Action buttons">
+                <button type="button" class="btn btn-primary" onclick="addColumn()">Add column</button>
+                <button type="button" class="btn btn-primary" onclick="generateTemplate()">Copy link</button>
+            </div>
+
+            <div class="loader">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
-    </a>
+    </div>
+    <footer>
+        <p>
+            Built by <a href="https://mathix.ninja/" target="_blank" rel="noopener">Arnaud Gissinger</a>
+        </p>
+    </footer>
 
     <script>
-        let itr, img, tid;
+        let res, firstColumnSav;
 
-        const base_url = window.location.hostname !== 'localhost' ? `https://${window.location.hostname}` : `http://${window.location.host}`;
+        const base_url = window.location.origin;
         const regex = /^(?:https?:\/\/)?(?:www.)?notion.so(?:\/\w+)?\/(?:.*-)?([a-f0-9]{32})(?:\?\w=?([a-f0-9]{32}))/gm;
-        const iframe = document.getElementById("inter");
         const display = document.getElementById("display");
+        const chartType = document.getElementById("chart-type");
         const timeInfo = document.getElementById("long-time-info");
 
-        function handleInputs(event) {
-            tid = setTimeout(() => timeInfo.style.display = 'block', 2000);
+        const main = document.querySelector('.tab-content');
+        const fields = document.getElementById('fields');
+        const firstColumn = main.querySelector('#main-content > .chart-data');
 
+        const darkMode = document.getElementById('darkMode');
+        const imageMode = document.getElementById('imageMode');
+
+        function handleInputs(event) {
             regex.lastIndex = 0;
             if (!regex.test(event.target.value)) {
                 display.style.display = 'none';
                 return;
             }
             regex.lastIndex = 0;
-            const res = regex.exec(event.target.value);
-            img = `${base_url}/chart-image/${res[1] || ""}/${res[2] || ""}`;
-            itr = `${base_url}/chart/${res[1] || ""}/${res[2] || ""}`;
+            res = regex.exec(event.target.value);
 
-            document.getElementById("image").src = img;
-            if (iframe.src)
-                iframe.contentWindow.location.replace(itr);
-            else
-                iframe.src = itr;
             display.style.display = 'contents';
+
+            // Show loader, remove all column except first and remove fields
+            removeAllColumns()
+            fields.innerHTML = '';
+            document.querySelector('.column + .btn-group').style.opacity = 0;
+            document.querySelector('.column + .btn-group + .loader').style.opacity = 1;
+
+            // Get new fields
+            fetch(base_url + '/notion-schema/' + (res[1] || "") + '/' + (res[2] || ""))
+                .then(function (res) {
+                    return res.json();
+                })
+                .then(function (json) {
+                    json.columns.map(function (column) {
+                        const opt = document.createElement('option');
+                        opt.innerText = column.name;
+                        opt.value = column.id;
+                        return opt;
+                    }).forEach(function (child) {
+                        fields.appendChild(child);
+                        firstColumnSav = firstColumn.cloneNode(true);
+                    });
+                    // Show content, hide loader
+                    document.querySelector('.column + .btn-group').style.opacity = 1;
+                    document.querySelector('.column + .btn-group + .loader').style.opacity = 0;
+                });
         }
-        document.getElementById("input").addEventListener('input', handleInputs);
-        iframe.addEventListener("load", () => {
-            clearTimeout(tid);
-            timeInfo.style.display = 'none';
+
+        function removeAllColumns() {
+            const container = document.getElementById('main-content');
+            while (container.childElementCount > 1) {
+                container.lastChild.remove();
+            }
+        }
+
+        function addColumn() {
+            const newElem = firstColumnSav.cloneNode(true);
+            const added = main.querySelector('.column').appendChild(newElem);
+            added.querySelector('.btn-close').onclick = function () {
+                added.remove();
+            };
+        }
+
+        function generateTemplate() {
+            const data = [...document.querySelectorAll('.chart-data')]
+                .map(function (el) {
+                    const name = el.querySelector('.name').value;
+                    const field = el.querySelector('.field').value;
+                    const action = el.querySelector('.action').value;
+                    return name + ':' + field + ':' + action;
+                });
+            const path = imageMode.checked ? '/image-chart/' : '/schema-chart/';
+            const appendix = darkMode.checked ? '&dark' : '';
+            Clipboard.copy(base_url + path + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(encodeURIComponent(data.join(','))) + '&t=' + chartType.value + appendix);
+        }
+
+        imageMode.addEventListener('change', (event) => {
+            darkMode.disabled = event.target.checked;
+            if (event.target.checked) {
+                darkMode.checked = false;
+            }
         });
+        document.getElementById("input").addEventListener('input', handleInputs);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
 </body>
 
