@@ -15,11 +15,11 @@
 
 ## Usage
 
-### For public notions
+### For public Notion pages
 
 Simply use https://charts.mathix.ninja url, and follow the documentation below.
 
-### For private notions
+### For private Notion pages
 
 You'll need to host your own version of this repository.
 The best way to do that is by clicking this button below, it will automatically host this API on [vercel.com](https://vercel.com/) which is **100% free**.
@@ -29,7 +29,7 @@ The best way to do that is by clicking this button below, it will automatically 
 
   1. Click the blue **Deploy** button on this page
   2. Log in or sign up to continue.
-  3. Choose a name for your project, keep in mind that this name will goes in your url `https://YOUR-PROJECT-NAME.now.sh`
+  3. Choose a name for your project, keep in mind that this name will goes in your url `https://YOUR-PROJECT-NAME.vercel.app`
   4. Follow instructions and don't forget to put your notion `TOKEN_V2` before clicking **Continue** [If you don't know how to get it, click here](/docs/notion-token.md)
   5. Click **Continue** one more time, and you're done!
 
@@ -43,16 +43,37 @@ Don't forget to use your URL instead of `charts.mathix.ninja`.
 If you want to stay up to date I will recommend you to use a [Deploy Hook](https://vercel.com/docs/v2/more/deploy-hooks).
 
 
-## New Example
+## Examples
 
-Pokedex normal types Candle-Stick chart
+### Pokedex average values for each type
 
-**Original:** [notion.so/8653464567ff4a91b89ac3d3a6ab78af](https://notion.so/8653464567ff4a91b89ac3d3a6ab78af)
+**Original:** [Notion Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
+
+**Columns:** `Primary Type:value | HP:avg | Attack:avg | Defense:avg | Speed:avg`
+
+**Line chart:** https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/9201f4ac42814afdbcdbee910c919e3f/2eb8d4fb18184bfb8cc7cd7b8c5ef002?s=Type%253A%29P%257CF%253Avalue%252CHP%253AHkft%253Aavg%252CAttack%253AB%252F%29Q%253Aavg%252CDefense%253Aq%252B%252BI%253Aavg%252CSpeed%253A8CLR%253Aavg&t=LineChart&dark
+
+<details>
+  <summary>See picture</summary>
+
+  ![Line chart pokemon](https://i.imgur.com/26QAU5m.png)
+  
+</details>
+
+### Pokedex normal types Candle-Stick chart
+
+**Original:** [Normal Type Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
 
 **Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
 
-https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
+**Candle-Stick chart:** https://notion-charts-git-multicharts-mathix420.vercel.app/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
 
+<details>
+  <summary>See picture</summary>
+
+  ![Candle-Stick chart pokemon](https://i.imgur.com/BaNfhQ9.png)
+  
+</details>
 
 ## Documentation
 
