@@ -105,39 +105,7 @@ def clean_data(rows, fields):
     return res
 
 
-@app.errorhandler(Exception)
-def handle_error(e):
-    code = 500
-    if isinstance(e, HTTPException):
-        code = e.code
-    return jsonify(error=str(e)), code
-
-
-TYPES_EXCLUDED = ['relation', 'person', 'date']
-
-
-@app.route('/notion-schema/<collection>/<view>')
-def get_schema(collection, view):
-    try:
-        cv = get_client().get_collection_view(URL_BASE.format(collection, view))
-    except Exception as e:
-        if str(e) == 'Invalid collection view URL':
-            raise Exception('Bad view')
-        raise
-
-    rows = cv.default_query().execute()
-
-    return jsonify({
-        'columns': list(filter(lambda x: x['type'] not in TYPES_EXCLUDED, rows[0].schema))
-    }), 200
-
-
-@app.route('/schema-chart/<collection>/<view>')
-def build_schema_chart(collection, view):
-    dark_mode = 'dark' in request.args
-    chart_type = request.args.get('t', 'PieChart')
-    columns_schema = request.args.get('s', '').split(',')
-
+def get_datas(collection, view, columns_schema):
     if not columns_schema:
         raise Exception('Bad schema')
     columns_schema = list(map(lambda x: x.split(':'), columns_schema))
@@ -171,6 +139,44 @@ def build_schema_chart(collection, view):
                 values = set(map(lambda x: x[field], group))
                 datas[-1][i] = ','.join(map(str, values)) if len(values) > 1 else (list(values) or [''])[0]
 
+    return cv, datas
+
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    code = 500
+    if isinstance(e, HTTPException):
+        code = e.code
+    return jsonify(error=str(e)), code
+
+
+TYPES_EXCLUDED = ['relation', 'person', 'date']
+
+
+@app.route('/notion-schema/<collection>/<view>')
+def get_schema(collection, view):
+    try:
+        cv = get_client().get_collection_view(URL_BASE.format(collection, view))
+    except Exception as e:
+        if str(e) == 'Invalid collection view URL':
+            raise Exception('Bad view')
+        raise
+
+    rows = cv.default_query().execute()
+
+    return jsonify({
+        'columns': list(filter(lambda x: x['type'] not in TYPES_EXCLUDED, rows[0].schema))
+    }), 200
+
+
+@app.route('/schema-chart/<collection>/<view>')
+def build_schema_chart(collection, view):
+    dark_mode = 'dark' in request.args
+    chart_type = request.args.get('t', 'PieChart')
+    columns_schema = request.args.get('s', '').split(',')
+
+    cv, datas = get_datas(collection, view, columns_schema)
+
     return render_template(
         'schema.html',
         dark_mode=dark_mode,
@@ -178,6 +184,40 @@ def build_schema_chart(collection, view):
         datas=json.dumps(datas),
         title=request.args.get('title', cv.name),
     )
+
+
+@app.route('/image-chart/<collection>/<view>')
+def get_chart_image_v2(collection, view):
+    chart_type = request.args.get('t', 'PieChart')
+    columns_schema = request.args.get('s', '').split(',')
+
+    cv, datas = get_datas(collection, view, columns_schema)
+
+    labels = list(map(lambda x: remove_non_ascii(x[0]), datas[1:]))
+    datasets = []
+
+    nb_datasets = len(datas[0])
+
+    for index in range(1, nb_datasets):
+        datasets.append({
+            'label': datas[0][index],
+            'data': list(map(lambda x: x[index], datas[1:]))
+        })
+
+    data = {
+        'type': chart_type.lower().replace('chart', ''),
+        'data': {
+            'labels': labels,
+            'borderWidth': 0,
+            'datasets': datasets
+        },
+        'options': {
+            'plugins': {'outlabels': {'text': ''}},
+            'rotation': 0,
+        }
+    }
+
+    return redirect(CHART_URL + json.dumps(data))
 
 
 @app.route('/chart-image/<collection>/<view>')
