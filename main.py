@@ -133,8 +133,11 @@ def get_datas(collection, view, columns_schema):
 
             if action == 'count':
                 datas[-1][i] = len(list(filter(lambda x: x[field], group)))
-            elif action == 'add':
+            elif action == 'sum':
                 datas[-1][i] = sum(map(lambda x: int(x[field]), group))
+            elif action == 'avg':
+                lst = list(map(lambda x: int(x[field]), group))
+                datas[-1][i] = sum(lst) / len(lst)
             else:
                 values = set(map(lambda x: x[field], group))
                 datas[-1][i] = ','.join(map(str, values)) if len(values) > 1 else (list(values) or [''])[0]
