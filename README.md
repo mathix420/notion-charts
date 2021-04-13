@@ -74,6 +74,21 @@ Right now there is 4 actions possible:
 
 # Examples
 
+## Todo-list pie chart
+
+> **Notion Database:** [Notion Task List](https://www.notion.so/mathix/efe5f941ce5e415da072615ee12b4a77?v=9e890bfd058a4d07af5b6024ec0a6e0a)
+> 
+> **Columns:** `Status:value | Status:count`
+> 
+> **Chart URL:** https://charts.mathix.ninja/schema-chart/efe5f941ce5e415da072615ee12b4a77/9e890bfd058a4d07af5b6024ec0a6e0a?s=Status%3A3E6J%3Avalue%2CCount%3A3E6J%3Acount&t=PieChart
+
+<details>
+  <summary>Image preview</summary>
+
+  ![Pie chart](https://charts.mathix.ninja/image-chart/efe5f941ce5e415da072615ee12b4a77/9e890bfd058a4d07af5b6024ec0a6e0a?s=Status%3A3E6J%3Avalue%2CCount%3A3E6J%3Acount&t=PieChart)
+
+</details>
+
 ## Type repartition of non-evolving Pokémons
 
 > **Notion Database:** [Non-evolving Pokémon](https://www.notion.so/d27bb47228d541a7a979bed894fb7533?v=9667c7a342fb43d88686776c52a6262e)
@@ -106,7 +121,7 @@ Right now there is 4 actions possible:
 
 ## Pokedex normal types candle-stick chart
 
-> **Original:** [Normal Type Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
+> **Notion Database:** [Normal Type Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
 >
 > **Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
 >
