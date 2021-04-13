@@ -74,33 +74,48 @@ Right now there is 4 actions possible:
 
 # Examples
 
-## Pokedex types line chart
+## Type repartition of non-evolving Pokémons
 
-**Notion Database:** [Notion Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
-
-**Columns:** `Primary Type:value | HP:avg | Attack:avg | Defense:avg | Speed:avg`
-
-**Chart URL:** https://charts.mathix.ninja/schema-chart/9201f4ac42814afdbcdbee910c919e3f/2eb8d4fb18184bfb8cc7cd7b8c5ef002?s=Type%253A%29P%257CF%253Avalue%252CHP%253AHkft%253Aavg%252CAttack%253AB%252F%29Q%253Aavg%252CDefense%253Aq%252B%252BI%253Aavg%252CSpeed%253A8CLR%253Aavg&t=LineChart&dark
+> **Notion Database:** [Non-evolving Pokémon](https://www.notion.so/d27bb47228d541a7a979bed894fb7533?v=9667c7a342fb43d88686776c52a6262e)
+> 
+> **Columns:** `Primary Type:value | Primary Type:count`
+> 
+> **Chart URL:** https://charts.mathix.ninja/schema-chart/d27bb47228d541a7a979bed894fb7533/9667c7a342fb43d88686776c52a6262e?s=Type%3A%29P%7CF%3Avalue%2CCount%3A%29P%7CF%3Acount&t=PieChart
 
 <details>
   <summary>Image preview</summary>
 
-  ![Line chart pokemon](https://i.imgur.com/26QAU5m.png)
+  ![Pie chart of non-evolving Pokémons](https://i.imgur.com/hzQs3rJ.png)
+
+</details>
+
+## Specs by type of non-evolving Pokémons
+
+> **Notion Database:** [Non-evolving Pokémon](https://www.notion.so/d27bb47228d541a7a979bed894fb7533?v=9667c7a342fb43d88686776c52a6262e)
+>
+> **Columns:** `Primary Type:value | HP:avg | Attack:avg | Defense:avg`
+>
+> **Chart URL:** https://charts.mathix.ninja/schema-chart/d27bb47228d541a7a979bed894fb7533/9667c7a342fb43d88686776c52a6262e?s=Type%3A%29P%7CF%3Avalue%2CHP%3AHkft%3Aavg%2CAttack%3AB%2F%29Q%3Aavg%2CDefense%3Aq%2B%2BI%3Aavg&t=LineChart
+
+<details>
+  <summary>Image preview</summary>
+
+  ![Line chart of non-evolving Pokémons](https://i.imgur.com/dfwzCPf.png)
 
 </details>
 
 ## Pokedex normal types candle-stick chart
 
-**Original:** [Normal Type Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
-
-**Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
-
-**Candle-Stick chart:** https://charts.mathix.ninja/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%253Atitle%253Avalue%252CPoints%253AHkft%253Avalue%252C%253AB%252F%29Q%253Avalue%252C%253Aq%252B%252BI%253Avalue%252C%253A8CLR%253Avalue&t=CandlestickChart
+> **Original:** [Normal Type Pokédex](https://www.notion.so/9201f4ac42814afdbcdbee910c919e3f?v=2eb8d4fb18184bfb8cc7cd7b8c5ef002)
+>
+> **Columns:** `Name:value | HP:value | Attack:value | Defense:value | Speed:value`
+>
+> **Chart URL:** https://charts.mathix.ninja/schema-chart/2b5e6a6389e64f3298ab97005f4e6a35/9ef790d411504c70b437361169034b42?s=Name%3Atitle%3Avalue%2CPoints%3AHkft%3Avalue%2C%3AB%2F%29Q%3Avalue%2C%3Aq%2B%2BI%3Avalue%2C%3A8CLR%3Avalue&t=CandlestickChart
 
 <details>
   <summary>Image preview</summary>
 
-  ![Candle-stick chart pokemon](https://i.imgur.com/BaNfhQ9.png)
+  ![Candle-stick chart Pokémon](https://i.imgur.com/BaNfhQ9.png)
 
 </details>
 
