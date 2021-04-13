@@ -152,8 +152,6 @@ def build_schema_chart(collection, view):
     chart_type = request.args.get('t', 'PieChart')
     columns_schema = request.args.get('s', '').split(',')
 
-    print(collection, view, columns_schema)
-
     cv, datas = get_datas(collection, view, columns_schema)
 
     return render_template(
@@ -173,7 +171,7 @@ def build_image_chart(collection, view):
     chart_type = request.args.get('t', 'PieChart')
     columns_schema = request.args.get('s', '').split(',')
 
-    cv, datas = get_datas(collection, view, columns_schema)
+    _, datas = get_datas(collection, view, columns_schema)
 
     labels = list(map(lambda x: remove_non_ascii(x[0]), datas[1:]))
     datasets = []

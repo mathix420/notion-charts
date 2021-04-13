@@ -208,6 +208,7 @@
                     }).forEach(function (child) {
                         fields.appendChild(child);
                         firstColumnSav = firstColumn.cloneNode(true);
+                        firstColumnSav.querySelector('input').value = '';
                     });
                     // Show content, hide loader
                     document.querySelector('.column + .btn-group').style.opacity = 1;
@@ -240,7 +241,7 @@
                 });
             const path = imageMode.checked ? '/image-chart/' : '/schema-chart/';
             const appendix = darkMode.checked ? '&dark' : '';
-            Clipboard.copy(base_url + path + (res[1] || "") + '/' + (res[2] || "") + '?s=' + encodeURIComponent(data.join(',')) + '&t=' + chartType.value + appendix);
+            Clipboard.copy(base_url + path + (res[1] || '') + '/' + (res[2] || '') + '?s=' + encodeURIComponent(data.join(',')) + '&t=' + chartType.value + appendix);
         }
 
         imageMode.addEventListener('change', (event) => {
@@ -249,7 +250,7 @@
                 darkMode.checked = false;
             }
         });
-        document.getElementById("input").addEventListener('input', handleInputs);
+        document.getElementById('input').addEventListener('input', handleInputs);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
