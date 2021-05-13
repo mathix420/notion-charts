@@ -1,2 +1,3 @@
-git+git://github.com/mathix420/notion-py.git@54e2e66f53f9278c51b7a32e966b2305b52edd47
-Flask>=1.1.1
+git+git://github.com/mathix420/notion-py.git@9ae430a1f22cfadd5633d1e01217907a4bef5e59
+Flask>=1.1.1,<2.0
+werkzeug<2.0
