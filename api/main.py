@@ -56,7 +56,7 @@ def flatten_row(row):
                 value = value.split(',')
             for v in value:
                 res += flatten_row({**row, field: v or 'EMPTY'})
-        elif value == []:
+        elif value == [] or value == None:
             return flatten_row({**row, field: 'EMPTY'})
 
     return res or [row]
