@@ -244,12 +244,6 @@
             Clipboard.copy(base_url + path + (res[1] || '') + '/' + (res[2] || '') + '?s=' + encodeURIComponent(data.join(',')) + '&t=' + chartType.value + appendix);
         }
 
-        imageMode.addEventListener('change', (event) => {
-            darkMode.disabled = event.target.checked;
-            if (event.target.checked) {
-                darkMode.checked = false;
-            }
-        });
         document.getElementById('input').addEventListener('input', handleInputs);
     </script>
 
