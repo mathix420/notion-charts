@@ -194,7 +194,7 @@ def build_image_chart(collection, view):
             'data': list(map(lambda x: x[index], datas[1:]))
         })
 
-    bkg = '%232f3437' if dark_mode else 'white'
+    bkg = '%23191919' if dark_mode else 'white'
     data = {
         'type': chart_type.lower().replace('chart', ''),
         'data': {
