@@ -1,4 +1,0 @@
-git+https://github.com/mathix420/notion-py.git@dba52d7cc5661b2978edfb1d70c1470d63fe1685
-markupsafe==2.0.1 # To fix issue `cannot import name 'soft_unicode' from 'markupsafe'`
-Flask>=1.1.1,<2.0
-werkzeug<2.0
