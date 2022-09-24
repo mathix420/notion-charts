@@ -1,11 +1,8 @@
-# IDE
-.vscode/
-.idea/
-
-# Python
-__pycache__
-*.pyc
-
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
 .env
-.now
-.vercel
+dist

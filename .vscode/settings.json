@@ -1,0 +1,10 @@
+{
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+    },
+    "editor.rulers": [100],
+    "svg.preview.background": "transparent",
+    "stylelint.configFile": "stylelint.config.js",
+}
