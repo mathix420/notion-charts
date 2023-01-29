@@ -15,6 +15,10 @@
   
 </details>
 
+> **Note**
+> 
+> This project is using a deprecated Unofficial Notion API.
+> Official API version is in development on the [V2 branch](https://github.com/mathix420/notion-charts/tree/v2).
 
 # Usage
 
